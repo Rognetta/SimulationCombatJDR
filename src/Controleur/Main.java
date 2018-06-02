@@ -20,15 +20,17 @@ public class Main {
     {
         
         /*
-        public int score;
-        public int pv;
-        public int dommage;
-        public int dommageBonus;
-        public int chance;
-        public String typearme;
-        public int tranchant;
-        public int contondant;
-        public int percant;
+        private int score;
+        private int pv;
+        private int dommage;
+        private int dommageBonus;
+        private int chance;
+        private String typearme;
+        private int armureTranchant;
+        private int armureContondant;
+        private int armurePercant;
+        private String nom;
+        private String équipe;
         */
         // Bite
         //int fin =0;
@@ -38,8 +40,8 @@ public class Main {
         for(int i = 0; i<1000; i++)
         {
             int fin = 0;
-            Combattant c1 = new Combattant(15, 30, 12, 3, 3, "tranchant", 3, 3, 3);
-            Combattant c2 = new Combattant(15, 30, 12, 3, 3, "tranchant", 3, 3, 3);
+            Combattant c1 = new Combattant(15, 30, 12, 3, 3, "tranchant", 3, 3, 3, "Shub", "Ylissia");
+            Combattant c2 = new Combattant(15, 30, 12, 3, 3, "tranchant", 3, 3, 3, "Sandra", "Pilio");
             System.out.println("PV de c1 :" + c1.getPv());
             System.out.println("PV de c2 :" + c2.getPv());
              while(fin == 0)
@@ -49,18 +51,18 @@ public class Main {
 
                 if(a < b)
                 {
-                    c1.degat(c2.dommage(), "contondant");
+                    c1.degat(c2.dommage(), c2.getTypearme());
                     System.out.println("c2 gagne le round");
                 }
                 else if(a > b)
                 {
-                    c2.degat(c1.dommage(), "contondant");
+                    c2.degat(c1.dommage(), c1.getTypearme());
                     System.out.println("c1 gagne le round");
                 }
                 else
                 {
-                    c1.degat(c2.dommage(), "contondant");
-                    c2.degat(c1.dommage(), "contondant");
+                    c1.degat(c2.dommage(), c2.getTypearme());
+                    c2.degat(c1.dommage(), c1.getTypearme());
                     System.out.println("egalite");
                 }
 

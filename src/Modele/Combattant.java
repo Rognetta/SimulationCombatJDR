@@ -15,26 +15,30 @@ import java.util.Random;
 
 public class Combattant {
     
-    public int score;
-    public int pv;
-    public int dommage;
-    public int dommageBonus;
-    public int chance;
-    public String typearme;
-    public int armureTranchant;
-    public int armureContondant;
-    public int armurePercant;
+    private int score;
+    private int pv;
+    private int dommage;
+    private int dommageBonus;
+    private int chance;
+    private String typearme;
+    private int armureTranchant;
+    private int armureContondant;
+    private int armurePercant;
+    private String nom;
+    private String équipe;
 
-    public Combattant(int score, int pv, int dommage, int dommageBonus, int chance, String typearme, int tranchant, int contondant, int percant) {
+    public Combattant(int score, int pv, int dommage, int dommageBonus, int chance, String typearme, int armureTranchant, int armureContondant, int armurePercant, String nom, String équipe) {
         this.score = score;
         this.pv = pv;
         this.dommage = dommage;
         this.dommageBonus = dommageBonus;
         this.chance = chance;
         this.typearme = typearme;
-        this.armureTranchant = tranchant;
-        this.armureContondant = contondant;
-        this.armurePercant = percant;
+        this.armureTranchant = armureTranchant;
+        this.armureContondant = armureContondant;
+        this.armurePercant = armurePercant;
+        this.nom = nom;
+        this.équipe = équipe;
     }
     
     public int lancerD20()
@@ -112,21 +116,12 @@ public class Combattant {
         res += this.score;
         return res;
     }
-    
-    public int getChance() {
-        return chance;
-    }
-
-    public void setChance(int chance) {
-        this.chance = chance;
-    }
-    
+       
     public int getPv() {
         return pv;
     }
 
-    public void setPv(int pv) {
-        this.pv = pv;
+    public String getTypearme() {
+        return typearme;
     }
-    
 }

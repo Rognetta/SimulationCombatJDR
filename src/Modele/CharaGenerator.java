@@ -5,10 +5,14 @@
  */
 package Modele;
 
+import Modele.Personnage;
+
 /**
  *
  * @author Aurelio
  */
 public class CharaGenerator {
+    
+    Personnage Generated;
     
 }

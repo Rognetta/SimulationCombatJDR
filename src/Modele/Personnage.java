@@ -10,6 +10,8 @@ package Modele;
  * @author Thomas
  */
 public class Personnage {
+    
+    // -- Attributs
     protected int chance;
     protected int chance_max;
     protected int force;
@@ -29,8 +31,10 @@ public class Personnage {
     protected int coeffRegenPv;
     protected int mana;
     protected int manaMax;
-    //-- magies
     protected int coeffRegenMana;
+    protected int dégats_bonus; // calcul auto
+    
+    //-- compétences
     protected int armeDistance;
     protected int armeDistance_bonus;
     protected int discretion;
@@ -53,12 +57,14 @@ public class Personnage {
     protected int persuation_bonus;
     protected int volonté; // calcul auto
     protected int volonté_bonus;
+    
+    // -- 
     protected int dégats;
-    protected int dégats_bonus; // calcul auto
     protected String typeDégat;
     protected int armurePercant;
     protected int armureContondant;
     protected int armureTranchant;
+    
     //--! A prevoir
     // armure mutation
     // système equivalent toggle des differentes pièces d'armures

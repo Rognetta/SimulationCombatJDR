@@ -11,3 +11,5 @@ nbactions.xml
 
 
 # End of https://www.gitignore.io/api/netbeans
+nbproject/private/private.properties
+nbproject/private/private.xml

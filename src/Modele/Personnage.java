@@ -74,7 +74,12 @@ public class Personnage {
     public Personnage() {
     }
 
-    public Personnage(int chance, int éclat, int force, int endurance, int agilité, int intelligence, int trempe, int social, int coeffRegenPv, int coeffRegenMana, int armeDistance, int discretion, int dressage, int mélée, int nage, int premiersSoin, int dégats, int bonus_dégatArme, String typeDégat, int armurePercant, int armureContondant, int armureTranchant) {
+    public Personnage(int chance, int éclat, int force, int endurance, 
+            int agilité, int intelligence, int trempe, int social, 
+            int coeffRegenPv, int coeffRegenMana, int armeDistance, 
+            int discretion, int dressage, int mélée, int nage, int premiersSoin, 
+            int dégats, int bonus_dégatArme, String typeDégat, int armurePercant, 
+            int armureContondant, int armureTranchant) {
         this.chance = chance;
         this.chance_max = chance;
         this.éclat = éclat;
@@ -150,7 +155,17 @@ public class Personnage {
         this.armureTranchant = armureTranchant;
     }
 
-    public Personnage(int chance, int chance_max, int éclat, int force, int force_bonus, int endurance, int endurance_bonus, int agilité, int agilité_bonus, int intelligence, int intelligence_bonus, int trempe, int trempe_bonus, int social, int social_bonus, int pv, int pv_max, int coeffRegenPv, int mana, int manaMax, int coeffRegenMana, int dégats_bonus, int armeDistance, int armeDistance_bonus, int discretion, int discretion_bonus, int dressage, int dressage_bonus, int mélée, int mélée_bonus, int nage, int nage_bonus, int premiersSoin, int premiersSoin_bonus, int coercition, int coercition_bonus, int mouvement, int mouvement_bonus, int perception, int perception_bonus, int persuasion, int persuasion_bonus, int volonté, int volonté_bonus, int dégats, int bonus_dégatArme, String typeDégat, int armurePercant, int armureContondant, int armureTranchant) {
+    public Personnage(int chance, int chance_max, int éclat, int force, 
+            int force_bonus, int endurance, int endurance_bonus, int agilité, 
+            int agilité_bonus, int intelligence, int intelligence_bonus, 
+            int trempe, int trempe_bonus, int social, int social_bonus, int pv, 
+            int pv_max, int coeffRegenPv, int mana, int manaMax, 
+            int coeffRegenMana, int dégats_bonus, int armeDistance, 
+            int armeDistance_bonus, int discretion, int discretion_bonus, 
+            int dressage, int dressage_bonus, int mélée, int mélée_bonus, 
+            int nage, int nage_bonus, int premiersSoin, int premiersSoin_bonus, 
+            int coercition, int coercition_bonus, int mouvement, 
+            int mouvement_bonus, int perception, int perception_bonus, int persuasion, int persuasion_bonus, int volonté, int volonté_bonus, int dégats, int bonus_dégatArme, String typeDégat, int armurePercant, int armureContondant, int armureTranchant) {
         this.chance = chance;
         this.chance_max = chance_max;
         this.éclat = éclat;
@@ -202,7 +217,405 @@ public class Personnage {
         this.armureContondant = armureContondant;
         this.armureTranchant = armureTranchant;
     }
-    
-    
-    
+
+    public int getChance() {
+        return chance;
+    }
+
+    public void setChance(int chance) {
+        this.chance = chance;
+    }
+
+    public int getChance_max() {
+        return chance_max;
+    }
+
+    public void setChance_max(int chance_max) {
+        this.chance_max = chance_max;
+    }
+
+    public int getÉclat() {
+        return éclat;
+    }
+
+    public void setÉclat(int éclat) {
+        this.éclat = éclat;
+    }
+
+    public int getForce() {
+        return force;
+    }
+
+    public void setForce(int force) {
+        this.force = force;
+    }
+
+    public int getForce_bonus() {
+        return force_bonus;
+    }
+
+    public void setForce_bonus(int force_bonus) {
+        this.force_bonus = force_bonus;
+    }
+
+    public int getEndurance() {
+        return endurance;
+    }
+
+    public void setEndurance(int endurance) {
+        this.endurance = endurance;
+    }
+
+    public int getEndurance_bonus() {
+        return endurance_bonus;
+    }
+
+    public void setEndurance_bonus(int endurance_bonus) {
+        this.endurance_bonus = endurance_bonus;
+    }
+
+    public int getAgilité() {
+        return agilité;
+    }
+
+    public void setAgilité(int agilité) {
+        this.agilité = agilité;
+    }
+
+    public int getAgilité_bonus() {
+        return agilité_bonus;
+    }
+
+    public void setAgilité_bonus(int agilité_bonus) {
+        this.agilité_bonus = agilité_bonus;
+    }
+
+    public int getIntelligence() {
+        return intelligence;
+    }
+
+    public void setIntelligence(int intelligence) {
+        this.intelligence = intelligence;
+    }
+
+    public int getIntelligence_bonus() {
+        return intelligence_bonus;
+    }
+
+    public void setIntelligence_bonus(int intelligence_bonus) {
+        this.intelligence_bonus = intelligence_bonus;
+    }
+
+    public int getTrempe() {
+        return trempe;
+    }
+
+    public void setTrempe(int trempe) {
+        this.trempe = trempe;
+    }
+
+    public int getTrempe_bonus() {
+        return trempe_bonus;
+    }
+
+    public void setTrempe_bonus(int trempe_bonus) {
+        this.trempe_bonus = trempe_bonus;
+    }
+
+    public int getSocial() {
+        return social;
+    }
+
+    public void setSocial(int social) {
+        this.social = social;
+    }
+
+    public int getSocial_bonus() {
+        return social_bonus;
+    }
+
+    public void setSocial_bonus(int social_bonus) {
+        this.social_bonus = social_bonus;
+    }
+
+    public int getPv() {
+        return pv;
+    }
+
+    public void setPv(int pv) {
+        this.pv = pv;
+    }
+
+    public int getPv_max() {
+        return pv_max;
+    }
+
+    public void setPv_max(int pv_max) {
+        this.pv_max = pv_max;
+    }
+
+    public int getCoeffRegenPv() {
+        return coeffRegenPv;
+    }
+
+    public void setCoeffRegenPv(int coeffRegenPv) {
+        this.coeffRegenPv = coeffRegenPv;
+    }
+
+    public int getMana() {
+        return mana;
+    }
+
+    public void setMana(int mana) {
+        this.mana = mana;
+    }
+
+    public int getManaMax() {
+        return manaMax;
+    }
+
+    public void setManaMax(int manaMax) {
+        this.manaMax = manaMax;
+    }
+
+    public int getCoeffRegenMana() {
+        return coeffRegenMana;
+    }
+
+    public void setCoeffRegenMana(int coeffRegenMana) {
+        this.coeffRegenMana = coeffRegenMana;
+    }
+
+    public int getDégats_bonus() {
+        return dégats_bonus;
+    }
+
+    public void setDégats_bonus(int dégats_bonus) {
+        this.dégats_bonus = dégats_bonus;
+    }
+
+    public int getArmeDistance() {
+        return armeDistance;
+    }
+
+    public void setArmeDistance(int armeDistance) {
+        this.armeDistance = armeDistance;
+    }
+
+    public int getArmeDistance_bonus() {
+        return armeDistance_bonus;
+    }
+
+    public void setArmeDistance_bonus(int armeDistance_bonus) {
+        this.armeDistance_bonus = armeDistance_bonus;
+    }
+
+    public int getDiscretion() {
+        return discretion;
+    }
+
+    public void setDiscretion(int discretion) {
+        this.discretion = discretion;
+    }
+
+    public int getDiscretion_bonus() {
+        return discretion_bonus;
+    }
+
+    public void setDiscretion_bonus(int discretion_bonus) {
+        this.discretion_bonus = discretion_bonus;
+    }
+
+    public int getDressage() {
+        return dressage;
+    }
+
+    public void setDressage(int dressage) {
+        this.dressage = dressage;
+    }
+
+    public int getDressage_bonus() {
+        return dressage_bonus;
+    }
+
+    public void setDressage_bonus(int dressage_bonus) {
+        this.dressage_bonus = dressage_bonus;
+    }
+
+    public int getMélée() {
+        return mélée;
+    }
+
+    public void setMélée(int mélée) {
+        this.mélée = mélée;
+    }
+
+    public int getMélée_bonus() {
+        return mélée_bonus;
+    }
+
+    public void setMélée_bonus(int mélée_bonus) {
+        this.mélée_bonus = mélée_bonus;
+    }
+
+    public int getNage() {
+        return nage;
+    }
+
+    public void setNage(int nage) {
+        this.nage = nage;
+    }
+
+    public int getNage_bonus() {
+        return nage_bonus;
+    }
+
+    public void setNage_bonus(int nage_bonus) {
+        this.nage_bonus = nage_bonus;
+    }
+
+    public int getPremiersSoin() {
+        return premiersSoin;
+    }
+
+    public void setPremiersSoin(int premiersSoin) {
+        this.premiersSoin = premiersSoin;
+    }
+
+    public int getPremiersSoin_bonus() {
+        return premiersSoin_bonus;
+    }
+
+    public void setPremiersSoin_bonus(int premiersSoin_bonus) {
+        this.premiersSoin_bonus = premiersSoin_bonus;
+    }
+
+    public int getCoercition() {
+        return coercition;
+    }
+
+    public void setCoercition(int coercition) {
+        this.coercition = coercition;
+    }
+
+    public int getCoercition_bonus() {
+        return coercition_bonus;
+    }
+
+    public void setCoercition_bonus(int coercition_bonus) {
+        this.coercition_bonus = coercition_bonus;
+    }
+
+    public int getMouvement() {
+        return mouvement;
+    }
+
+    public void setMouvement(int mouvement) {
+        this.mouvement = mouvement;
+    }
+
+    public int getMouvement_bonus() {
+        return mouvement_bonus;
+    }
+
+    public void setMouvement_bonus(int mouvement_bonus) {
+        this.mouvement_bonus = mouvement_bonus;
+    }
+
+    public int getPerception() {
+        return perception;
+    }
+
+    public void setPerception(int perception) {
+        this.perception = perception;
+    }
+
+    public int getPerception_bonus() {
+        return perception_bonus;
+    }
+
+    public void setPerception_bonus(int perception_bonus) {
+        this.perception_bonus = perception_bonus;
+    }
+
+    public int getPersuasion() {
+        return persuasion;
+    }
+
+    public void setPersuasion(int persuasion) {
+        this.persuasion = persuasion;
+    }
+
+    public int getPersuasion_bonus() {
+        return persuasion_bonus;
+    }
+
+    public void setPersuasion_bonus(int persuasion_bonus) {
+        this.persuasion_bonus = persuasion_bonus;
+    }
+
+    public int getVolonté() {
+        return volonté;
+    }
+
+    public void setVolonté(int volonté) {
+        this.volonté = volonté;
+    }
+
+    public int getVolonté_bonus() {
+        return volonté_bonus;
+    }
+
+    public void setVolonté_bonus(int volonté_bonus) {
+        this.volonté_bonus = volonté_bonus;
+    }
+
+    public int getDégats() {
+        return dégats;
+    }
+
+    public void setDégats(int dégats) {
+        this.dégats = dégats;
+    }
+
+    public int getBonus_dégatArme() {
+        return bonus_dégatArme;
+    }
+
+    public void setBonus_dégatArme(int bonus_dégatArme) {
+        this.bonus_dégatArme = bonus_dégatArme;
+    }
+
+    public String getTypeDégat() {
+        return typeDégat;
+    }
+
+    public void setTypeDégat(String typeDégat) {
+        this.typeDégat = typeDégat;
+    }
+
+    public int getArmurePercant() {
+        return armurePercant;
+    }
+
+    public void setArmurePercant(int armurePercant) {
+        this.armurePercant = armurePercant;
+    }
+
+    public int getArmureContondant() {
+        return armureContondant;
+    }
+
+    public void setArmureContondant(int armureContondant) {
+        this.armureContondant = armureContondant;
+    }
+
+    public int getArmureTranchant() {
+        return armureTranchant;
+    }
+
+    public void setArmureTranchant(int armureTranchant) {
+        this.armureTranchant = armureTranchant;
+    }
+        
 }

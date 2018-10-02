@@ -36,33 +36,25 @@ public class Combat {
         return res;
     }
 
-    public void degat(Personnage Fighter, int dommage) {
+    public int armure(Personnage Fighter, int dommage) {
+        int pvActuel = Fighter.getPv();
         if (Fighter.getTypeDégat() == null) {
             System.out.println("There is a problem");
         } else {
             switch (Fighter.getTypeDégat()) {
                 case "tranchant":
                     if (dommage > Fighter.getArmureTranchant()) {
-                        //il est possible qu'il y ait des conflits si je récupère une valeur
-                        //dans un set de la même valeur, donc je vais mettre un intermédiaire
-                        int pvActuel = Fighter.getPv();
-                        Fighter.setPv(pvActuel - dommage + Fighter.getArmureTranchant());
+                        pvActuel = pvActuel - dommage + Fighter.getArmureTranchant();
                     }
                     break;
                 case "contondant":
                     if (dommage > Fighter.getArmureContondant()) {
-                        //il est possible qu'il y ait des conflits si je récupère une valeur
-                        //dans un set de la même valeur, donc je vais mettre un intermédiaire
-                        int pvActuel = Fighter.getPv();
-                        Fighter.setPv(pvActuel - dommage + Fighter.getArmureContondant());
+                        pvActuel = pvActuel - dommage + Fighter.getArmureContondant();
                     }
                     break;
                 case "percant":
                     if (dommage > Fighter.getArmurePercant()) {
-                        //il est possible qu'il y ait des conflits si je récupère une valeur
-                        //dans un set de la même valeur, donc je vais mettre un intermédiaire
-                        int pvActuel = Fighter.getPv();
-                        Fighter.setPv(pvActuel - dommage + Fighter.getArmurePercant());
+                        pvActuel = pvActuel - dommage + Fighter.getArmurePercant();
                     }
                     break;
                 default:
@@ -70,11 +62,38 @@ public class Combat {
                     break;
             }
         }
+        return pvActuel;
     }
     
-    public int Combat() {
-    int a = 0;
-    return a;
-}
+    public int scoreCombat(Personnage Fighter){
+        int res;
+        res = Fighter.getMélée() + Fighter.getForce();
+        return res;
+    }
     
+    public int[] combat(Personnage C1, Personnage C2) {
+        int sc1 = scoreCombat(C1);
+        int sc2 = scoreCombat(C2);
+        int pvRestant1 = C1.getPv();
+        int pvRestant2 = C2.getPv();
+        
+        if (sc1 == sc2){
+            int d1 = dommage(C1);
+            int d2 = dommage(C2);
+            pvRestant1 = armure(C1, d2);
+            pvRestant2 = armure(C2, d1);
+        }
+        else if (sc1 < sc2){
+            int d2 = dommage(C2);
+            pvRestant1 = armure(C1, d2);
+        }
+        else if (sc1 > sc2) {
+            int d1 = dommage(C1);
+            pvRestant2 = armure(C2, d1);
+        }
+        
+        int tab[] = {pvRestant1,pvRestant2};
+        return tab;
+    }
+
 }

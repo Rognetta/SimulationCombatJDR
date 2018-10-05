@@ -32,10 +32,10 @@ public class Combat {
         Random rand = new Random();
         int d = rand.nextInt(Fighter.getDégats() - 1) + 1;
         res = Fighter.getDégats_bonus() + Fighter.getBonus_dégatArme() + d;
-        //System.out.println("Dommage = " + res);
         return res;
     }
-
+    
+    ///ATTENTION RECUPERE UNE MAUVAISE VALEUR DE PV
     public int armure(Personnage Fighter, int dommage) {
         int pvActuel = Fighter.getPv();
         if (Fighter.getTypeDégat() == null) {
@@ -64,36 +64,43 @@ public class Combat {
         }
         return pvActuel;
     }
-    
-    public int scoreCombat(Personnage Fighter){
+
+    public int scoreCombat(Personnage Fighter) {
         int res;
-        res = Fighter.getMélée() + Fighter.getForce();
+        res = Fighter.getMélée() + Fighter.getForce() + lancerD20();
         return res;
     }
-    
-    public int[] combat(Personnage C1, Personnage C2) {
-        int sc1 = scoreCombat(C1);
-        int sc2 = scoreCombat(C2);
-        int pvRestant1 = C1.getPv();
-        int pvRestant2 = C2.getPv();
+
+    public int combat(Personnage C1, Personnage C2) {
+        //int pvRestant1 = C1.getPv();
+        //int pvRestant2 = C2.getPv();
         
-        if (sc1 == sc2){
-            int d1 = dommage(C1);
-            int d2 = dommage(C2);
-            pvRestant1 = armure(C1, d2);
-            pvRestant2 = armure(C2, d1);
+        while (C1.getPv() > 0 || C2.getPv() > 0) {
+            int sc1 = scoreCombat(C1);
+            int sc2 = scoreCombat(C2);
+            if (sc1 == sc2) {
+                int d1 = dommage(C1);
+                int d2 = dommage(C2);
+                C1.setPv(armure(C1, d2));
+                C2.setPv(armure(C2, d1));
+            } else if (sc1 < sc2) {
+                int d2 = dommage(C2);
+                C1.setPv(armure(C1, d2));
+            } else if (sc1 > sc2) {
+                int d1 = dommage(C1);
+                C2.setPv(armure(C2, d1));
+            }
         }
-        else if (sc1 < sc2){
-            int d2 = dommage(C2);
-            pvRestant1 = armure(C1, d2);
+
+        if (C1.getPv() <= 0) {
+            return 1;
         }
-        else if (sc1 > sc2) {
-            int d1 = dommage(C1);
-            pvRestant2 = armure(C2, d1);
+        else if (C2.getPv() <= 0) {
+            return 2;
         }
-        
-        int tab[] = {pvRestant1,pvRestant2};
-        return tab;
+        else {
+            return 0;
+        }
     }
 
 }

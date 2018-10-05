@@ -12,6 +12,9 @@ import java.util.Random;
  * @author Aurelio
  */
 public class CharaGenerator {
+
+    public CharaGenerator() {
+    }
     
     
     public int NbToNbGen(int from, int to) {
@@ -33,6 +36,7 @@ public class CharaGenerator {
         int coeffRegenMana = 2;
         int degats = 4;
         int BDA=0;
+        String typeDegats = "tranchant";
         int AP = 0;
         int AC =0;
         int AT = 0;
@@ -44,7 +48,7 @@ public class CharaGenerator {
                 NbToNbGen(CompMin, CompMax), NbToNbGen(CompMin, CompMax), 
                 NbToNbGen(CompMin, CompMax), NbToNbGen(CompMin, CompMax), 
                 NbToNbGen(CompMin, CompMax), NbToNbGen(CompMin, CompMax), degats, 
-                BDA, "String typeDégat", AP, AC, AT);
+                BDA, typeDegats, AP, AC, AT);
         return Paysan;
     }
     

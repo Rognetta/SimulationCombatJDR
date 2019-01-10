@@ -30,18 +30,18 @@ public class Combat {
     public int dommage(Personnage Fighter) {
         int res;
         Random rand = new Random();
-        int d = rand.nextInt(Fighter.getDégats() - 1) + 1;
-        res = Fighter.getDégats_bonus() + Fighter.getBonus_dégatArme() + d;
+        int d = rand.nextInt(Fighter.getDegats() - 1) + 1;
+        res = Fighter.getDégats_bonus() + Fighter.getBonus_degatArme() + d;
         return res;
     }
     
     ///ATTENTION RECUPERE UNE MAUVAISE VALEUR DE PV
     public int armure(Personnage Fighter, int dommage) {
         int pvActuel = Fighter.getPv();
-        if (Fighter.getTypeDégat() == null) {
+        if (Fighter.getTypeDegat() == null) {
             System.out.println("There is a problem");
         } else {
-            switch (Fighter.getTypeDégat()) {
+            switch (Fighter.getTypeDegat()) {
                 case "tranchant":
                     if (dommage > Fighter.getArmureTranchant()) {
                         pvActuel = pvActuel - dommage + Fighter.getArmureTranchant();
@@ -58,7 +58,7 @@ public class Combat {
                     }
                     break;
                 default:
-                    System.out.println("There might be a problem: " + Fighter.getTypeDégat());
+                    System.out.println("There might be a problem: " + Fighter.getTypeDegat());
                     break;
             }
         }
@@ -67,7 +67,7 @@ public class Combat {
 
     public int scoreCombat(Personnage Fighter) {
         int res;
-        res = Fighter.getMélée() + Fighter.getForce() + lancerD20();
+        res = Fighter.getMelee() + Fighter.getForce() + lancerD20();
         return res;
     }
 

@@ -14,13 +14,13 @@ public class Personnage {
     // -- Attributs
     protected int chance;
     protected int chance_max;
-    protected int éclat;
+    protected int eclat;
     protected int force;
     protected int force_bonus;
     protected int endurance;
     protected int endurance_bonus;
-    protected int agilité;
-    protected int agilité_bonus;
+    protected int agilite;
+    protected int agilite_bonus;
     protected int intelligence;
     protected int intelligence_bonus;
     protected int trempe;
@@ -42,8 +42,8 @@ public class Personnage {
     protected int discretion_bonus;
     protected int dressage;
     protected int dressage_bonus;
-    protected int mélée;
-    protected int mélée_bonus;
+    protected int melee;
+    protected int melee_bonus;
     protected int nage;
     protected int nage_bonus;
     protected int premiersSoin;
@@ -56,13 +56,13 @@ public class Personnage {
     protected int perception_bonus;
     protected int persuasion; // =arrondiSup(S*2+I)
     protected int persuasion_bonus;
-    protected int volonté; // =arrondiSup(T*2+E)
-    protected int volonté_bonus;
+    protected int volonte; // =arrondiSup(T*2+E)
+    protected int volonte_bonus;
     
     // -- equipements
-    protected int dégats;
-    protected int bonus_dégatArme;
-    protected String typeDégat;
+    protected int degats;
+    protected int bonus_degatArme;
+    protected String typeDegat;
     protected int armurePercant;
     protected int armureContondant;
     protected int armureTranchant;
@@ -74,21 +74,21 @@ public class Personnage {
     public Personnage() {
     }
 
-    public Personnage(int chance, int éclat, int force, int endurance, 
-            int agilité, int intelligence, int trempe, int social, 
-            int coeffRegenPv, int coeffRegenMana, int armeDistance, 
-            int discretion, int dressage, int mélée, int nage, int premiersSoin, 
-            int dégats, int bonus_dégatArme, String typeDégat, int armurePercant, 
-            int armureContondant, int armureTranchant) {
+    public Personnage(int chance, int eclat, 
+            int force, int endurance, int agilite, int intelligence, int trempe, int social, 
+            int coeffRegenPv, int coeffRegenMana, 
+            int armeDistance, int discretion, int dressage, int mélée, int nage, int premiersSoin, 
+            int degats, int bonus_degatArme, String typeDegat, 
+            int armurePercant, int armureContondant, int armureTranchant) {
         this.chance = chance;
         this.chance_max = chance;
-        this.éclat = éclat;
+        this.eclat = eclat;
         this.force = force;
         this.force_bonus = 0;
         this.endurance = endurance;
         this.endurance_bonus = 0;
-        this.agilité = agilité;
-        this.agilité_bonus = 0;
+        this.agilite = agilite;
+        this.agilite_bonus = 0;
         this.intelligence = intelligence;
         this.intelligence_bonus = 0;
         this.trempe = trempe;
@@ -131,8 +131,8 @@ public class Personnage {
         this.discretion_bonus = 0;
         this.dressage = dressage;
         this.dressage_bonus = 0;
-        this.mélée = mélée;
-        this.mélée_bonus = 0;
+        this.melee = melee;
+        this.melee_bonus = 0;
         this.nage = nage;
         this.nage_bonus = 0;
         this.premiersSoin = premiersSoin;
@@ -145,36 +145,40 @@ public class Personnage {
         this.perception_bonus = 0;
         this.persuasion = 0; // a compléter
         this.persuasion_bonus = 0;
-        this.volonté = 0; // a compléter
-        this.volonté_bonus = 0;
-        this.dégats = dégats;
-        this.bonus_dégatArme = bonus_dégatArme;
-        this.typeDégat = typeDégat;
+        this.volonte = 0; // a compléter
+        this.volonte_bonus = 0;
+        this.degats = degats;
+        this.bonus_degatArme = bonus_degatArme;
+        this.typeDegat = typeDegat;
         this.armurePercant = armurePercant;
         this.armureContondant = armureContondant;
         this.armureTranchant = armureTranchant;
     }
 
-    public Personnage(int chance, int chance_max, int éclat, int force, 
-            int force_bonus, int endurance, int endurance_bonus, int agilité, 
-            int agilité_bonus, int intelligence, int intelligence_bonus, 
-            int trempe, int trempe_bonus, int social, int social_bonus, int pv, 
-            int pv_max, int coeffRegenPv, int mana, int manaMax, 
-            int coeffRegenMana, int dégats_bonus, int armeDistance, 
-            int armeDistance_bonus, int discretion, int discretion_bonus, 
-            int dressage, int dressage_bonus, int mélée, int mélée_bonus, 
+    public Personnage(int chance, int chance_max, int eclat, 
+            int force, int force_bonus, int endurance, int endurance_bonus, 
+            int agilite, int agilite_bonus, int intelligence, int intelligence_bonus, 
+            int trempe, int trempe_bonus, int social, int social_bonus, 
+            int pv, int pv_max, int coeffRegenPv, 
+            int mana, int manaMax, int coeffRegenMana, 
+            int degats_bonus, 
+            int armeDistance, int armeDistance_bonus, int discretion, int discretion_bonus, 
+            int dressage, int dressage_bonus, int melee, int melee_bonus, 
             int nage, int nage_bonus, int premiersSoin, int premiersSoin_bonus, 
-            int coercition, int coercition_bonus, int mouvement, 
-            int mouvement_bonus, int perception, int perception_bonus, int persuasion, int persuasion_bonus, int volonté, int volonté_bonus, int dégats, int bonus_dégatArme, String typeDégat, int armurePercant, int armureContondant, int armureTranchant) {
+            int coercition, int coercition_bonus, 
+            int mouvement, int mouvement_bonus, int perception, int perception_bonus, 
+            int persuasion, int persuasion_bonus, int volonte, int volonte_bonus, 
+            int dégats, int bonus_dégatArme, String typeDégat, 
+            int armurePercant, int armureContondant, int armureTranchant) {
         this.chance = chance;
         this.chance_max = chance_max;
-        this.éclat = éclat;
+        this.eclat = eclat;
         this.force = force;
         this.force_bonus = force_bonus;
         this.endurance = endurance;
         this.endurance_bonus = endurance_bonus;
-        this.agilité = agilité;
-        this.agilité_bonus = agilité_bonus;
+        this.agilite = agilite;
+        this.agilite_bonus = agilite_bonus;
         this.intelligence = intelligence;
         this.intelligence_bonus = intelligence_bonus;
         this.trempe = trempe;
@@ -194,8 +198,8 @@ public class Personnage {
         this.discretion_bonus = discretion_bonus;
         this.dressage = dressage;
         this.dressage_bonus = dressage_bonus;
-        this.mélée = mélée;
-        this.mélée_bonus = mélée_bonus;
+        this.melee = melee;
+        this.melee_bonus = melee_bonus;
         this.nage = nage;
         this.nage_bonus = nage_bonus;
         this.premiersSoin = premiersSoin;
@@ -208,11 +212,11 @@ public class Personnage {
         this.perception_bonus = perception_bonus;
         this.persuasion = persuasion;
         this.persuasion_bonus = persuasion_bonus;
-        this.volonté = volonté;
-        this.volonté_bonus = volonté_bonus;
-        this.dégats = dégats;
-        this.bonus_dégatArme = bonus_dégatArme;
-        this.typeDégat = typeDégat;
+        this.volonte = volonte;
+        this.volonte_bonus = volonte_bonus;
+        this.degats = dégats;
+        this.bonus_degatArme = bonus_dégatArme;
+        this.typeDegat = typeDégat;
         this.armurePercant = armurePercant;
         this.armureContondant = armureContondant;
         this.armureTranchant = armureTranchant;
@@ -234,12 +238,12 @@ public class Personnage {
         this.chance_max = chance_max;
     }
 
-    public int getÉclat() {
-        return éclat;
+    public int getEclat() {
+        return eclat;
     }
 
-    public void setÉclat(int éclat) {
-        this.éclat = éclat;
+    public void setEclat(int eclat) {
+        this.eclat = eclat;
     }
 
     public int getForce() {
@@ -274,20 +278,20 @@ public class Personnage {
         this.endurance_bonus = endurance_bonus;
     }
 
-    public int getAgilité() {
-        return agilité;
+    public int getAgilite() {
+        return agilite;
     }
 
-    public void setAgilité(int agilité) {
-        this.agilité = agilité;
+    public void setAgilite(int agilite) {
+        this.agilite = agilite;
     }
 
-    public int getAgilité_bonus() {
-        return agilité_bonus;
+    public int getAgilite_bonus() {
+        return agilite_bonus;
     }
 
-    public void setAgilité_bonus(int agilité_bonus) {
-        this.agilité_bonus = agilité_bonus;
+    public void setAgilite_bonus(int agilite_bonus) {
+        this.agilite_bonus = agilite_bonus;
     }
 
     public int getIntelligence() {
@@ -442,20 +446,20 @@ public class Personnage {
         this.dressage_bonus = dressage_bonus;
     }
 
-    public int getMélée() {
-        return mélée;
+    public int getMelee() {
+        return melee;
     }
 
-    public void setMélée(int mélée) {
-        this.mélée = mélée;
+    public void setMelee(int melee) {
+        this.melee = melee;
     }
 
-    public int getMélée_bonus() {
-        return mélée_bonus;
+    public int getMelee_bonus() {
+        return melee_bonus;
     }
 
-    public void setMélée_bonus(int mélée_bonus) {
-        this.mélée_bonus = mélée_bonus;
+    public void setMelee_bonus(int melee_bonus) {
+        this.melee_bonus = melee_bonus;
     }
 
     public int getNage() {
@@ -554,44 +558,44 @@ public class Personnage {
         this.persuasion_bonus = persuasion_bonus;
     }
 
-    public int getVolonté() {
-        return volonté;
+    public int getVolonte() {
+        return volonte;
     }
 
-    public void setVolonté(int volonté) {
-        this.volonté = volonté;
+    public void setVolonte(int volonte) {
+        this.volonte = volonte;
     }
 
-    public int getVolonté_bonus() {
-        return volonté_bonus;
+    public int getVolonte_bonus() {
+        return volonte_bonus;
     }
 
-    public void setVolonté_bonus(int volonté_bonus) {
-        this.volonté_bonus = volonté_bonus;
+    public void setVolonte_bonus(int volonte_bonus) {
+        this.volonte_bonus = volonte_bonus;
     }
 
-    public int getDégats() {
-        return dégats;
+    public int getDegats() {
+        return degats;
     }
 
-    public void setDégats(int dégats) {
-        this.dégats = dégats;
+    public void setDegats(int degats) {
+        this.degats = degats;
     }
 
-    public int getBonus_dégatArme() {
-        return bonus_dégatArme;
+    public int getBonus_degatArme() {
+        return bonus_degatArme;
     }
 
-    public void setBonus_dégatArme(int bonus_dégatArme) {
-        this.bonus_dégatArme = bonus_dégatArme;
+    public void setBonus_degatArme(int bonus_degatArme) {
+        this.bonus_degatArme = bonus_degatArme;
     }
 
-    public String getTypeDégat() {
-        return typeDégat;
+    public String getTypeDegat() {
+        return typeDegat;
     }
 
-    public void setTypeDégat(String typeDégat) {
-        this.typeDégat = typeDégat;
+    public void setTypeDegat(String typeDegat) {
+        this.typeDegat = typeDegat;
     }
 
     public int getArmurePercant() {

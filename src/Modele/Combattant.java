@@ -25,9 +25,9 @@ public class Combattant {
     private int armureContondant;
     private int armurePercant;
     private String nom;
-    private String équipe;
+    private String equipe;
 
-    public Combattant(int score, int pv, int dommage, int dommageBonus, int chance, String typearme, int armureTranchant, int armureContondant, int armurePercant, String nom, String équipe) {
+    public Combattant(int score, int pv, int dommage, int dommageBonus, int chance, String typearme, int armureTranchant, int armureContondant, int armurePercant, String nom, String equipe) {
         this.score = score;
         this.pv = pv;
         this.dommage = dommage;
@@ -38,7 +38,7 @@ public class Combattant {
         this.armureContondant = armureContondant;
         this.armurePercant = armurePercant;
         this.nom = nom;
-        this.équipe = équipe;
+        this.equipe = equipe;
     }
     
     public int lancerD20()

@@ -11,6 +11,8 @@ package Modele;
  */
 public class Personnage {
     
+    private String nom;
+    
     // -- Attributs
     protected int chance;
     protected int chance_max;
@@ -74,12 +76,13 @@ public class Personnage {
     public Personnage() {
     }
 
-    public Personnage(int chance, int eclat, 
+    public Personnage(String nom, int chance, int eclat, 
             int force, int endurance, int agilite, int intelligence, int trempe, int social, 
             int coeffRegenPv, int coeffRegenMana, 
             int armeDistance, int discretion, int dressage, int mélée, int nage, int premiersSoin, 
             int degats, int bonus_degatArme, String typeDegat, 
             int armurePercant, int armureContondant, int armureTranchant) {
+        this.nom = nom;
         this.chance = chance;
         this.chance_max = chance;
         this.eclat = eclat;
@@ -155,7 +158,7 @@ public class Personnage {
         this.armureTranchant = armureTranchant;
     }
 
-    public Personnage(int chance, int chance_max, int eclat, 
+    public Personnage(String nom, int chance, int chance_max, int eclat, 
             int force, int force_bonus, int endurance, int endurance_bonus, 
             int agilite, int agilite_bonus, int intelligence, int intelligence_bonus, 
             int trempe, int trempe_bonus, int social, int social_bonus, 
@@ -170,6 +173,7 @@ public class Personnage {
             int persuasion, int persuasion_bonus, int volonte, int volonte_bonus, 
             int dégats, int bonus_dégatArme, String typeDégat, 
             int armurePercant, int armureContondant, int armureTranchant) {
+        this.nom = nom;
         this.chance = chance;
         this.chance_max = chance_max;
         this.eclat = eclat;
@@ -220,6 +224,14 @@ public class Personnage {
         this.armurePercant = armurePercant;
         this.armureContondant = armureContondant;
         this.armureTranchant = armureTranchant;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public int getChance() {

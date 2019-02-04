@@ -76,6 +76,10 @@ public class Personnage {
     public Personnage() {
     }
 
+    public Personnage(String nom) {
+        this.nom = nom;
+    }
+
     public Personnage(String nom, int chance, int eclat, 
             int force, int endurance, int agilite, int intelligence, int trempe, int social, 
             int coeffRegenPv, int coeffRegenMana, 

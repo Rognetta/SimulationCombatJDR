@@ -17,3 +17,6 @@ nbproject/private/private.xml
 dist/README.TXT
 nbproject/private/private.xml
 nbproject/private/private.properties
+nbproject/project.properties
+build/built-jar.properties
+build/classes/Modele/Combattant.class

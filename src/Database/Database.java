@@ -39,7 +39,7 @@ public class Database {
     
     public void readFromFile(File _file) throws IOException{
         ObjectMapper objMap = new ObjectMapper();
-        ArrayList<Combattant> db;
+        ArrayList<Personnage> db;
         db = objMap.readValue(_file, objMap.getTypeFactory().constructCollectionType(ArrayList.class, Personnage.class));
         //ArrayList<User> db = mapper.readValue(jsonInput, new TypeReference<List<ConsultantDto>>(){});
         System.out.println("Database lue avec : "+db.toString());
@@ -48,16 +48,6 @@ public class Database {
     
     public void writeToFile(File _file, List<Combattant> _lCombattant){
         
-    }
-    
-    public boolean findWithMdp(String _mdp) {
-        boolean found = false;
-        for (User data : m_dataBase) {
-            if(data.getM_mdp().equals(_mdp)) {
-                found = true;
-            }
-        }
-        return found;
     }
 
     public boolean findWithNom(String _nom) {
@@ -71,38 +61,28 @@ public class Database {
 //            System.out.println("class of this.m_dataBase.get(i) : "+this.m_dataBase.get(i).getClass()+" ; value : "+this.m_dataBase.get(i));
             Personnage data = this.m_database.get(i);
 
-            if(data.getNo.equals(_nom)) {
+            if(data.getNom().equals(_nom)) {
                 found = true;
             }
         }
         return found;
     }
 
-    public String addToDatabasa(User _user) {
-        if(this.findWithNom(_user.getM_nom())) {
+    public String addToDatabasa(Personnage _personnage) {
+        if(this.findWithNom(_personnage.getNom())) {
             return "user already exist";
         }
-        this.m_dataBase.add(_user);
+        this.m_database.add(_personnage);
         return "user created with sucess";
     }
 
-    public User getUserByNom(String _nom) {
-        for (User data : this.m_dataBase) {
-            if(data.getM_nom().equals(_nom)) {
+    public Personnage getPersonnageByNom(String _nom) {
+        for (Personnage data : this.m_database) {
+            if(data.getNom().equals(_nom)) {
                 return data;
             }
         }
-        return new User("null", "null");
-    }
-
-    public boolean userExist(String _login, String _mdp) {
-        if(this.findWithNom(_login)) {
-            Combattant uTemp = this.getUserByNom(_login);
-            if(uTemp.getM_mdp().equals(_mdp)) {
-                return true;
-            }
-        }
-        return false;
+        return new Personnage("null");
     }
 
     @Override

@@ -14,7 +14,6 @@ nbactions.xml
 nbproject/private/private.properties
 nbproject/private/private.xml
 *.properties
-*.jar
 dist/README.TXT
 nbproject/private/private.xml
 nbproject/private/private.properties

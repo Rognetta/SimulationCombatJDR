@@ -41,7 +41,7 @@ public class CharaGenerator {
         int AC =0;
         int AT = 0;
         
-        Personnage Paysan= new Personnage(chance, eclat, NbToNbGen(AttributMin, AttributMax), 
+        Personnage Paysan= new Personnage("paysan",chance, eclat, NbToNbGen(AttributMin, AttributMax), 
                 NbToNbGen(AttributMin, AttributMax), NbToNbGen(AttributMin, AttributMax), 
                 NbToNbGen(AttributMin, AttributMax), NbToNbGen(AttributMin, AttributMax), 
                 NbToNbGen(AttributMin, AttributMax), coeffRegenPV, coeffRegenMana, 

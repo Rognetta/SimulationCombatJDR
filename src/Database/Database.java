@@ -8,7 +8,9 @@ package Database;
 import Modele.Combattant;
 import Modele.Personnage;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,11 +20,13 @@ import java.util.List;
  * @author thoma
  */
 public class Database {
-    
+
     private ArrayList<Personnage> m_database;
 
-    public Database() throws IOException {
-        this.readFromFile(new File("./data/database.json"));
+    private String cheminDuFichier = "src/data/database.json";
+
+    public Database() {
+        this.m_database = new ArrayList<>();
     }
 
     public Database(ArrayList<Personnage> m_database) {
@@ -37,17 +41,26 @@ public class Database {
         this.m_database = m_database;
     }
     
-    public void readFromFile(File _file) throws IOException{
+    public File getActualFile() {
+        return new File(cheminDuFichier);
+    }
+
+    public void readFromFile(File _file) throws IOException {
         ObjectMapper objMap = new ObjectMapper();
         ArrayList<Personnage> db;
         db = objMap.readValue(_file, objMap.getTypeFactory().constructCollectionType(ArrayList.class, Personnage.class));
-        //ArrayList<User> db = mapper.readValue(jsonInput, new TypeReference<List<ConsultantDto>>(){});
-        System.out.println("Database lue avec : "+db.toString());
         this.m_database = db;
+//        String db = objMap.readValue(_file, String.class);
+//        System.out.println("Database lue avec : " + db.toString());
+
     }
-    
-    public void writeToFile(File _file, List<Combattant> _lCombattant){
-        
+
+    public void writeToFile(File _file, List<Personnage> _lCombattant) throws IOException {
+        ObjectMapper objMap = new ObjectMapper();
+        BufferedWriter writer = new BufferedWriter(new FileWriter(cheminDuFichier));
+        writer.write(objMap.writeValueAsString(this.m_database));
+
+        writer.close();
     }
 
     public boolean findWithNom(String _nom) {
@@ -57,11 +70,11 @@ public class Database {
 //                found = true;
 //            }
 //        }
-        for(int i=0;i<this.m_database.size();i++) {
+        for (int i = 0; i < this.m_database.size(); i++) {
 //            System.out.println("class of this.m_dataBase.get(i) : "+this.m_dataBase.get(i).getClass()+" ; value : "+this.m_dataBase.get(i));
             Personnage data = this.m_database.get(i);
 
-            if(data.getNom().equals(_nom)) {
+            if (data.getNom().equals(_nom)) {
                 found = true;
             }
         }
@@ -69,7 +82,7 @@ public class Database {
     }
 
     public String addToDatabasa(Personnage _personnage) {
-        if(this.findWithNom(_personnage.getNom())) {
+        if (this.findWithNom(_personnage.getNom())) {
             return "user already exist";
         }
         this.m_database.add(_personnage);
@@ -78,7 +91,7 @@ public class Database {
 
     public Personnage getPersonnageByNom(String _nom) {
         for (Personnage data : this.m_database) {
-            if(data.getNom().equals(_nom)) {
+            if (data.getNom().equals(_nom)) {
                 return data;
             }
         }
@@ -89,5 +102,5 @@ public class Database {
     public String toString() {
         return "Database{" + "m_database=" + m_database + '}';
     }
-   
+
 }

@@ -26,41 +26,38 @@ public class Main {
     public static void main(String[] args) {
 
         CharaGenerator Gen = new CharaGenerator();
-//        Combat Fight = new Combat();
-//        Personnage C1 = new Personnage();
-//        Personnage C2 = new Personnage();
-//        C1 = Gen.PaysanGen();
-//        C2 = Gen.PaysanGen();
-//        int count1 = 0;
-//        int count2 = 0;
-//        Personnage C1copie = new Personnage();
-//        Personnage C2copie = new Personnage();
-//        C1copie = C1;
-//        C2copie = C2;
-//        
-//        int victory = 0;
-//        for (int i = 0; i < 1000; i++) {
-//            victory = Fight.combat(C1, C2);
-//            if (victory == 1) {
-//                count1++;
-//            }
-//            else if (victory == 2) {
-//                count2++;
-//            }
-//            
-//            C1 = C1copie;
-//            C2 = C2copie;
-//        }
-//
-//        System.out.println("Pourcentage de c1 = " + count1/10f + " plus ou moins 2 pourcent");
-//        System.out.println("Pourcentage de c2 = " + count2/10f + " plus ou moins 2 pourcent");
-        Database database = new Database();
-        try {
-            database.readFromFile(database.getActualFile());
-        } catch (IOException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        Combat Fight = new Combat();
+        Personnage C1 = new Personnage();
+        Personnage C2 = new Personnage();
+        C1 = Gen.PaysanGen();
+        C2 = Gen.PaysanGen();
+        int count1 = 0;
+        int count2 = 0;
+        
+        for (int i = 0; i < 1000; i++) {
+            int victory = 0;
+            victory = Fight.combat(C1, C2);
+            if (victory == 1) {
+                count1++;
+            }
+            else if (victory == 2) {
+                count2++;
+            }
+            C1.fullHeal();
+            C2.fullHeal();
         }
-        System.out.println("Database size : " + database.getM_database().size());
+
+        System.out.println("Pourcentage de c1 = " + count1/10f + " plus ou moins 2 pourcent");
+        System.out.println("Pourcentage de c2 = " + count2/10f + " plus ou moins 2 pourcent");
+        
+
+//        Database database = new Database();
+//        try {
+//            database.readFromFile(database.getActualFile());
+//        } catch (IOException ex) {
+//            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        System.out.println("Database size : " + database.getM_database().size());
 //        database.addToDatabasa(Gen.PaysanGen());
 //        System.out.println("Database size after insert : " + database.getM_database().size());
 //        try {

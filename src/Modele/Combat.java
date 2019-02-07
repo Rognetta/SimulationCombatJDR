@@ -72,10 +72,9 @@ public class Combat {
     }
 
     public int combat(Personnage C1, Personnage C2) {
-        //int pvRestant1 = C1.getPv();
-        //int pvRestant2 = C2.getPv();
-        
-        while (C1.getPv() > 0 || C2.getPv() > 0) {
+        boolean debug = false; 
+                
+        while (!debug) {//le sang de tes morts j'ai passé 5h sur le fait que le while prend pas deux conditions
             int sc1 = scoreCombat(C1);
             int sc2 = scoreCombat(C2);
             if (sc1 == sc2) {
@@ -90,17 +89,15 @@ public class Combat {
                 int d1 = dommage(C1);
                 C2.setPv(armure(C2, d1));
             }
+            
+            if (C2.getPv() <= 0) {
+                return 1;
+            }
+            else if (C1.getPv() <= 0) {
+                return 2;
+            }
         }
-
-        if (C1.getPv() <= 0) {
-            return 1;
-        }
-        else if (C2.getPv() <= 0) {
-            return 2;
-        }
-        else {
-            return 0;
-        }
+        return 0;
     }
 
 }

@@ -229,7 +229,12 @@ public class Personnage {
         this.armureContondant = armureContondant;
         this.armureTranchant = armureTranchant;
     }
-
+    
+    //Methode
+    public void fullHeal() {
+        pv = pv_max;
+    }
+    
     public String getNom() {
         return nom;
     }

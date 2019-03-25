@@ -5,6 +5,14 @@
  */
 package Jframe;
 
+import Database.Database;
+import Modele.Message;
+import java.awt.Frame;
+import java.awt.event.ComponentEvent;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author thoma
@@ -13,30 +21,41 @@ public class PopUp extends javax.swing.JFrame {
     
     int width = 200;
     int lengt = 400;
+    
+    Database database = new Database();
+    
+    Frame frame = new Frame();
+    
+    public PopUp() {
+        
+    }
 
     /**
      * Creates new form PopUp
      */
-    public PopUp() {
+    public PopUp(final Frame jFrame1) {
         setComponents();
-        
+        frame = jFrame1;
     }
     
-    public PopUp(String _title) {
+    public PopUp(String _title, final Frame jFrame1) {
         super(_title);
         initComponents();
         setComponents();
+        frame = jFrame1;
     }
     
     private void setComponents() {
-        System.out.println(getDefaultCloseOperation());
         setDefaultCloseOperation(2);
-        System.out.println(getDefaultCloseOperation());
-//        this.setTitle("Pop-up");
         this.setSize(lengt,width);
         // afficher la fenetre
         this.setVisible(true);
     }
+    
+    public void componentShown(ComponentEvent e) throws IOException {
+      /* code run when component shown */
+        System.out.println("Ahahahah");
+   }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -96,7 +115,14 @@ public class PopUp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            database.writeMessageToFile("temp.json", new Message(this.jTextField1.getText()));
+        } catch (IOException ex) {
+            Logger.getLogger(PopUp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("From pop-up : "+this.jTextField1.getText());
+        frame.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -130,7 +156,7 @@ public class PopUp extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PopUp().setVisible(true);
+                PopUp popUp = new PopUp();
             }
         });
     }

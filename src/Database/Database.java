@@ -6,6 +6,7 @@
 package Database;
 
 import Modele.Combattant;
+import Modele.Message;
 import Modele.Personnage;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.BufferedWriter;
@@ -22,8 +23,11 @@ import java.util.List;
 public class Database {
 
     private ArrayList<Personnage> m_database;
+    private Personnage personnageToAdd;
+    private Message message;
 
-    private String cheminDuFichier = "src/data/database.json";
+    private String cheminDuFichier = "src/data/";
+    private String datebaseFile = "database.json";
 
     public Database() {
         this.m_database = new ArrayList<>();
@@ -40,27 +44,60 @@ public class Database {
     public void setM_database(ArrayList<Personnage> m_database) {
         this.m_database = m_database;
     }
-    
-    public File getActualFile() {
-        return new File(cheminDuFichier);
+
+    public Personnage getPersonnageToAdd() {
+        return personnageToAdd;
     }
 
-    public void readFromFile(File _file) throws IOException {
+    public void setPersonnageToAdd(Personnage personnageToAdd) {
+        this.personnageToAdd = personnageToAdd;
+    }
+
+    public Message getMessage() {
+        return message;
+    }
+
+    public void setMessage(Message message) {
+        this.message = message;
+    }
+
+    public File getActualFile(String _nameOfFile) {
+        return new File(cheminDuFichier+_nameOfFile);
+    }
+
+    public void readDbFromFile() throws IOException {
         ObjectMapper objMap = new ObjectMapper();
-        ArrayList<Personnage> db;
-        db = objMap.readValue(_file, objMap.getTypeFactory().constructCollectionType(ArrayList.class, Personnage.class));
+        ArrayList<Personnage> db = objMap.readValue(getActualFile(this.datebaseFile), objMap.getTypeFactory().constructCollectionType(ArrayList.class, Personnage.class));
         this.m_database = db;
 //        String db = objMap.readValue(_file, String.class);
 //        System.out.println("Database lue avec : " + db.toString());
-
     }
 
-    public void writeToFile(File _file, List<Personnage> _lCombattant) throws IOException {
+    public void readMessageFromFile(File _file) throws IOException {
         ObjectMapper objMap = new ObjectMapper();
-        BufferedWriter writer = new BufferedWriter(new FileWriter(cheminDuFichier));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(_file));
+        message = objMap.readValue(cheminDuFichier + _file, objMap.getTypeFactory().constructCollectionType(ArrayList.class, Message.class));
+//        String db = objMap.readValue(_file, String.class);
+//        System.out.println("Database lue avec : " + db.toString());
+        writer.close();
+    }
+
+    public void writeDbToFile() throws IOException {
+        ObjectMapper objMap = new ObjectMapper();
+        BufferedWriter writer = new BufferedWriter(new FileWriter(cheminDuFichier + this.datebaseFile));
         writer.write(objMap.writeValueAsString(this.m_database));
 
         writer.close();
+        this.m_database.removeAll(this.m_database);
+    }
+
+    public void writeMessageToFile(String _nomFichier, Message _message) throws IOException {
+        ObjectMapper objMap = new ObjectMapper();
+        BufferedWriter writer = new BufferedWriter(new FileWriter(cheminDuFichier + _nomFichier));
+        writer.write(objMap.writeValueAsString(this.message));
+
+        writer.close();
+        this.message = new Message();
     }
 
     public boolean findWithNom(String _nom) {
@@ -81,7 +118,7 @@ public class Database {
         return found;
     }
 
-    public String addToDatabasa(Personnage _personnage) {
+    public String addToDatabase(Personnage _personnage) {
         if (this.findWithNom(_personnage.getNom())) {
             return "user already exist";
         }
@@ -100,7 +137,7 @@ public class Database {
 
     @Override
     public String toString() {
-        return "Database{" + "m_database=" + m_database + '}';
+        return "Database{" + "m_database=" + m_database + ", personnageToAdd=" + personnageToAdd + ", message=" + message + ", cheminDuFichier=" + cheminDuFichier + '}';
     }
 
 }

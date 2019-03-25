@@ -69,7 +69,6 @@
     <Component class="javax.swing.JButton" name="pop_up">
       <Properties>
         <Property name="text" type="java.lang.String" value="pop-up"/>
-        <Property name="actionCommand" type="java.lang.String" value="pop-up"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pop_upActionPerformed"/>

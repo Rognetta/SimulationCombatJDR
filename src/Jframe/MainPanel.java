@@ -5,41 +5,51 @@
  */
 package Jframe;
 
+import Database.Database;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentEvent;
+import java.io.IOException;
 import javax.swing.JPanel;
 
 /**
  *
  * @author thoma
  */
-public class PanelTest extends javax.swing.JFrame {
+public class MainPanel extends javax.swing.JFrame {
 
     JPanel panel;
     int width = 500;
     int lengt = 800;
+    
+    Database database = new Database();
 
     /**
      * Creates new form PanelTest
      */
-    public PanelTest() {
+    public MainPanel() {
         initComponents();
         this.setComponents();
     }
 
-    public PanelTest(String _title) {
+    public MainPanel(String _title) {
         super(_title);
         initComponents();
         this.setComponents();
     }
 
     private void setComponents() {
-        this.setTitle("Test Jframe");
         this.setSize(lengt, width);
         // afficher la fenetre
         this.setVisible(true);
     }
+    
+   public void componentShown(ComponentEvent e) throws IOException {
+      /* code run when component shown */
+      database.readMessageFromFile(database.getActualFile("temp.json"));
+       System.out.println("Retour : "+database.getMessage());
+   }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -66,7 +76,6 @@ public class PanelTest extends javax.swing.JFrame {
         });
 
         pop_up.setText("pop-up");
-        pop_up.setActionCommand("pop-up");
         pop_up.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pop_upActionPerformed(evt);
@@ -105,9 +114,9 @@ public class PanelTest extends javax.swing.JFrame {
 
     private void pop_upActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pop_upActionPerformed
         // TODO add your handling code here:
-        System.out.println("Pop-up");
-        PopUp popUp = new PopUp("PopUp");
+        PopUp popUp = new PopUp("PopUp", this);
         popUp.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_pop_upActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -132,21 +141,21 @@ public class PanelTest extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PanelTest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PanelTest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PanelTest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PanelTest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                PanelTest paneltest = new PanelTest();
-
+                MainPanel paneltest = new MainPanel();
             }
         });
     }

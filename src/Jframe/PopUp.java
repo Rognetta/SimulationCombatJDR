@@ -22,9 +22,12 @@ public class PopUp extends javax.swing.JFrame {
     int width = 200;
     int lengt = 400;
     
+    private String messageFile = "message.json";
+    
     Database database = new Database();
     
     Frame frame = new Frame();
+    
     
     public PopUp() {
         
@@ -117,11 +120,10 @@ public class PopUp extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             // TODO add your handling code here:
-            database.writeMessageToFile("temp.json", new Message(this.jTextField1.getText()));
+            database.writeMessageToFile(this.messageFile, new Message(this.jTextField1.getText(), "pop-up"));
         } catch (IOException ex) {
             Logger.getLogger(PopUp.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("From pop-up : "+this.jTextField1.getText());
         frame.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed

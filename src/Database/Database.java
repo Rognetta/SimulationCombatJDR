@@ -28,6 +28,7 @@ public class Database {
 
     private String cheminDuFichier = "src/data/";
     private String datebaseFile = "database.json";
+    private String messageFile = "message.json";
 
     public Database() {
         this.m_database = new ArrayList<>();
@@ -73,13 +74,10 @@ public class Database {
 //        System.out.println("Database lue avec : " + db.toString());
     }
 
-    public void readMessageFromFile(File _file) throws IOException {
+    public void readMessageFromFile() throws IOException {
         ObjectMapper objMap = new ObjectMapper();
-        BufferedWriter writer = new BufferedWriter(new FileWriter(_file));
-        message = objMap.readValue(cheminDuFichier + _file, objMap.getTypeFactory().constructCollectionType(ArrayList.class, Message.class));
-//        String db = objMap.readValue(_file, String.class);
-//        System.out.println("Database lue avec : " + db.toString());
-        writer.close();
+        this.message = objMap.readValue(getActualFile(this.messageFile), Message.class);
+//        System.out.println("Database lue avec : " + this.toString());
     }
 
     public void writeDbToFile() throws IOException {
@@ -88,13 +86,14 @@ public class Database {
         writer.write(objMap.writeValueAsString(this.m_database));
 
         writer.close();
-        this.m_database.removeAll(this.m_database);
+        this.m_database.clear();
     }
 
     public void writeMessageToFile(String _nomFichier, Message _message) throws IOException {
         ObjectMapper objMap = new ObjectMapper();
         BufferedWriter writer = new BufferedWriter(new FileWriter(cheminDuFichier + _nomFichier));
-        writer.write(objMap.writeValueAsString(this.message));
+        writer.write(objMap.writeValueAsString(_message));
+        System.out.println("message on writeMessageToFile : "+_message.getMsg());
 
         writer.close();
         this.message = new Message();

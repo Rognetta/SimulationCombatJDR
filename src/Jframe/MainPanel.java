@@ -7,10 +7,14 @@ package Jframe;
 
 import Database.Database;
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 
 /**
@@ -24,19 +28,55 @@ public class MainPanel extends javax.swing.JFrame {
     int lengt = 800;
     
     Database database = new Database();
+    ComponentListener componentListener;
 
     /**
      * Creates new form PanelTest
      */
     public MainPanel() {
+        this.componentListener = initComponentListener();
         initComponents();
         this.setComponents();
     }
 
     public MainPanel(String _title) {
         super(_title);
+//        this.componentListener = initComponentListener();
         initComponents();
         this.setComponents();
+        this.addComponentListener(initComponentListener());
+    }
+    
+    private ComponentListener initComponentListener(){
+        return new ComponentListener() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+//                System.out.println("rezised");
+            }
+            
+            @Override
+            public void componentMoved(ComponentEvent e) {
+//                System.out.println("moved");
+            }
+            
+            @Override
+            public void componentShown(ComponentEvent e) {
+//                System.out.println("shown");
+                try {
+                    //                database.getActualFile("temp.json");
+                    database.readMessageFromFile();
+                    System.out.println("message after shown : "+database.getMessage().toString());
+                    jButton1.setText(database.getMessage().getMsg());
+                } catch (IOException ex) {
+                    Logger.getLogger(MainPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            
+            @Override
+            public void componentHidden(ComponentEvent e) {
+//                System.out.println("hidden");
+            }
+        };
     }
 
     private void setComponents() {
@@ -45,11 +85,7 @@ public class MainPanel extends javax.swing.JFrame {
         this.setVisible(true);
     }
     
-   public void componentShown(ComponentEvent e) throws IOException {
-      /* code run when component shown */
-      database.readMessageFromFile(database.getActualFile("temp.json"));
-       System.out.println("Retour : "+database.getMessage());
-   }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -123,7 +159,7 @@ public class MainPanel extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.out.println("Boooo");
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */

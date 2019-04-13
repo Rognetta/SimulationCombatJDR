@@ -34,9 +34,9 @@ public class MainPanel extends javax.swing.JFrame {
      * Creates new form PanelTest
      */
     public MainPanel() {
-        this.componentListener = initComponentListener();
         initComponents();
         this.setComponents();
+        this.addComponentListener(initComponentListener());
     }
 
     public MainPanel(String _title) {

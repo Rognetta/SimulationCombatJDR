@@ -35,7 +35,7 @@ public class Personnage {
     protected int mana; // = mana_max à la création
     protected int manaMax; // = T*4+I*2
     protected int coeffRegenMana;
-    protected int dégats_bonus; // = F-4 si F<=5 ; =F-5 sinon
+    protected int degats_bonus; // = F-4 si F<=5 ; =F-5 sinon
     
     //-- compétences
     protected int armeDistance;
@@ -83,7 +83,7 @@ public class Personnage {
     public Personnage(String nom, int chance, int eclat, 
             int force, int endurance, int agilite, int intelligence, int trempe, int social, 
             int coeffRegenPv, int coeffRegenMana, 
-            int armeDistance, int discretion, int dressage, int mélée, int nage, int premiersSoin, 
+            int armeDistance, int discretion, int dressage, int melee, int nage, int premiersSoin, 
             int degats, int bonus_degatArme, String typeDegat, 
             int armurePercant, int armureContondant, int armureTranchant) {
         this.nom = nom;
@@ -109,25 +109,25 @@ public class Personnage {
         this.manaMax = this.mana;
         this.coeffRegenMana = coeffRegenMana;
         switch(force) {
-            case 1:this.dégats_bonus = -3;
+            case 1:this.degats_bonus = -3;
             break;
-            case 2:this.dégats_bonus = -2;
+            case 2:this.degats_bonus = -2;
             break;
-            case 3:this.dégats_bonus = -1;
+            case 3:this.degats_bonus = -1;
             break;
-            case 4:this.dégats_bonus = 0;
+            case 4:this.degats_bonus = 0;
             break;
-            case 5:this.dégats_bonus = 1;
+            case 5:this.degats_bonus = 1;
             break;
-            case 6:this.dégats_bonus = 1;
+            case 6:this.degats_bonus = 1;
             break;
-            case 7:this.dégats_bonus = 2;
+            case 7:this.degats_bonus = 2;
             break;
-            case 8:this.dégats_bonus = 3;
+            case 8:this.degats_bonus = 3;
             break;
-            case 9:this.dégats_bonus = 4;
+            case 9:this.degats_bonus = 4;
             break;
-            case 10:this.dégats_bonus = 5;
+            case 10:this.degats_bonus = 5;
             break;
             default:
                 break;
@@ -199,7 +199,7 @@ public class Personnage {
         this.mana = mana;
         this.manaMax = manaMax;
         this.coeffRegenMana = coeffRegenMana;
-        this.dégats_bonus = dégats_bonus;
+        this.degats_bonus = degats_bonus;
         this.armeDistance = armeDistance;
         this.armeDistance_bonus = armeDistance_bonus;
         this.discretion = discretion;
@@ -412,11 +412,11 @@ public class Personnage {
     }
 
     public int getDégats_bonus() {
-        return dégats_bonus;
+        return degats_bonus;
     }
 
     public void setDégats_bonus(int dégats_bonus) {
-        this.dégats_bonus = dégats_bonus;
+        this.degats_bonus = dégats_bonus;
     }
 
     public int getArmeDistance() {

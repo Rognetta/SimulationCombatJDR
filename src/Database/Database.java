@@ -5,7 +5,6 @@
  */
 package Database;
 
-import Modele.Combattant;
 import Modele.Message;
 import Modele.Personnage;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -14,7 +13,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
